@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.darrensmithwtc</groupId>
     <artifactId>jmeter.backendlistener.newrelic</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <description>A JMeter plug-in that enables you to send test results to NewRelic.</description>
@@ -123,7 +123,7 @@
     <distributionManagement>
         <repository>
             <id>github</id>
-            <name>GitHub</name>
+            <name>GitHub Pacakges</name>
             <url>https://maven.pkg.github.com/darrensmithwtc/jmeter-backend-newrelic</url>
         </repository>
     </distributionManagement>
@@ -133,7 +133,7 @@
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.7</version>
+                <version>1.6.13</version>
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
