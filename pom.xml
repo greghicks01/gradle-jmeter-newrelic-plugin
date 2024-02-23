@@ -46,7 +46,7 @@
         <junit.jupiter.version>5.7.2</junit.jupiter.version>
         <junit.platform.version>1.7.2</junit.platform.version>
         <com.newrelic.telemetry.version>0.12.0</com.newrelic.telemetry.version>
-        <org.slf4j.version>1.7.30</org.slf4j.version>
+        <org.slf4j.version>2.0.12</org.slf4j.version>
     </properties>
 
     <dependencies>
