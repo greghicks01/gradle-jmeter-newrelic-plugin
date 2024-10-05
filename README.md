@@ -1,6 +1,5 @@
 # jmeter-backend-newrelic
 
-[![CI](https://github.com/darrensmithwtc/jmeter-backend-newrelic/actions/workflows/maven.yml/badge.svg)](https://github.com/darrensmithwtc/jmeter-backend-newrelic/actions/workflows/maven.yml)
 
 A JMeter plug-in that enables you to send test results to New Relic Metrics API.
 
@@ -30,6 +29,10 @@ The following test results metrics are exposed by the plugin.
 - GrpThreads
 - AllThreads
 - (Optional) aih.{response_header}
+
+### Build
+
+Use gradlew shadowJar and copy the build/libs/NewRelicBackendClient-all.jar to your jmeter lib/ext folder.
 
 ### Plugin installation
 
