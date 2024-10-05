@@ -1,9 +1,9 @@
 # jmeter-backend-newrelic
 
-
 A JMeter plug-in that enables you to send test results to New Relic Metrics API.
 
 ## Overview
+
 Modified to user Gradle and improved with newer JMeter scan feature.
 
 ### Description
@@ -32,7 +32,16 @@ The following test results metrics are exposed by the plugin.
 
 ### Build
 
-Use gradlew shadowJar and copy the build/libs/NewRelicBackendClient-all.jar to your jmeter lib/ext folder.
+Use  and copy the build/libs/NewRelicBackendClient-all.jar to your jmeter lib/ext folder.
+
+``` powershell
+./gradlew shadowJar
+```
+
+
+### Security Considerations
+
+Ensure you have not embedded secrets within the code base, use secret stores.
 
 ### Plugin installation
 
@@ -41,6 +50,10 @@ move the JAR to your `$JMETER_HOME/lib/ext`.
 
 ```bash
 mv target/jmeter.backendlistener.newrelic-VERSION.jar $JMETER_HOME/lib/ext/
+```
+
+``` powershell
+copy build/libs/NewRelicBackendClient-all.jar %JMETER_HOME%/lib/ext
 ```
 
 Then, restart JMeter and the plugin should be loaded.
