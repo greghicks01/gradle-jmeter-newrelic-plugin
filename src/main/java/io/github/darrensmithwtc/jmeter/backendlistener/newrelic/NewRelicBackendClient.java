@@ -4,6 +4,7 @@ import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.samplers.SampleResult;
 import org.apache.jmeter.threads.JMeterContextService;
 import org.apache.jmeter.visualizers.backend.AbstractBackendListenerClient;
+import org.apache.jmeter.visualizers.backend.BackendListenerClient;
 import org.apache.jmeter.visualizers.backend.BackendListenerContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,9 @@ import com.newrelic.telemetry.OkHttpPoster;
 import com.newrelic.telemetry.metrics.Gauge;
 import com.newrelic.telemetry.metrics.MetricBatchSender;
 import com.newrelic.telemetry.metrics.MetricBuffer;
+import com.google.auto.service.AutoService;
 
+@AutoService(BackendListenerClient.class)
 public class NewRelicBackendClient extends AbstractBackendListenerClient {
 
     /**
@@ -167,7 +170,7 @@ public class NewRelicBackendClient extends AbstractBackendListenerClient {
 
         factory = MetricBatchSenderFactory.fromHttpImplementation(OkHttpPoster::new);
 
-        java.net.URL endpoint = new java.net.URL(connectionString);
+        java.net.URL endpoint = new java.net.URI(connectionString).toURL();
 
         sender = MetricBatchSender
                 .create(factory.configureWith(licenseKey).useLicenseKey(true).endpoint(endpoint).build());

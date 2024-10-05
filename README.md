@@ -5,6 +5,7 @@
 A JMeter plug-in that enables you to send test results to New Relic Metrics API.
 
 ## Overview
+Modified to user Gradle and improved with newer JMeter scan feature.
 
 ### Description
 

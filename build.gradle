@@ -1,0 +1,66 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    orgApacheJmeterVersion = '5.6.3'
+    orgApacheCommonsVersion = '3.12.0'
+    newrelicTelemetryVersion = '0.16.0'
+    googleAutoServiceVersion = '1.0'
+}
+
+dependencies {
+    implementation "org.slf4j:slf4j-api:1.7.32"
+    implementation("org.apache.jmeter:jorphan:${orgApacheJmeterVersion}") {
+        exclude group: 'org.slf4j', module: 'slf4j-api'
+    }
+    implementation("org.apache.jmeter:ApacheJMeter_core:${orgApacheJmeterVersion}") {
+        exclude group: 'org.slf4j', module: 'slf4j-api'
+    }
+    implementation("org.apache.jmeter:ApacheJMeter_java:${orgApacheJmeterVersion}") {
+        exclude group: 'org.slf4j', module: 'slf4j-api'
+    }
+    implementation("org.apache.jmeter:ApacheJMeter_http:${orgApacheJmeterVersion}") {
+        exclude group: 'org.slf4j', module: 'slf4j-api'
+    }
+    implementation("org.apache.commons:commons-lang3:${orgApacheCommonsVersion}") {
+        exclude group: 'org.slf4j', module: 'slf4j-api'
+    }
+    implementation("com.newrelic.telemetry:telemetry-core:${newrelicTelemetryVersion}") {
+        exclude group: 'org.slf4j', module: 'slf4j-api'
+    }
+    implementation("com.newrelic.telemetry:telemetry-http-okhttp:${newrelicTelemetryVersion}") {
+        exclude group: 'org.slf4j', module: 'slf4j-api'
+    }
+    implementation("com.google.auto.service:auto-service:${googleAutoServiceVersion}") {
+        exclude group: 'org.slf4j', module: 'slf4j-api'
+    }
+    annotationProcessor "com.google.auto.service:auto-service:${googleAutoServiceVersion}"
+}
+
+jar {
+    archiveFileName = 'NewRelicBackendClient.jar'
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    manifest {
+        attributes(
+            'Implementation-Title': 'NewRelicBackendClient',
+            'Implementation-Version': '1.0'
+        )
+    }
+}
+
+shadowJar {
+    mergeServiceFiles()
+    archiveFileName = 'NewRelicBackendClient-all.jar'
+}
