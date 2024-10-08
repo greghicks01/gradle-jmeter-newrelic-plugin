@@ -1,4 +1,4 @@
-package io.github.darrensmithwtc.jmeter.backendlistener.newrelic;
+package au.greghicks.jmeter.backendlistener.newrelic;
 
 import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.samplers.SampleResult;

@@ -1,1 +1,1 @@
-io.github.darrensmithwtc.jmeter.backendlistener.newrelic.NewRelicBackendClient
+au.greghicks.jmeter.backendlistener.backendlistener.newrelic.NewRelicBackendClient
